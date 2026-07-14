@@ -6,364 +6,520 @@
 <title>Marquis Clothing Parañaque | Digital printing service in Parañaque</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700;800&family=Space+Grotesk+Narrow:wght@400;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#FAF8F5;--fg:#18181B;--blue:#1C1A18;--white:#FFFFFF;--border:#C8C5CB;
-  --muted:#47464B;--light:#F4F2FD;--magnolia:#FBF8FF;--ease-expo:cubic-bezier(0.16,1,0.3,1);
+--steel:#64748B;--orange:#2B2E33;--orange-dark:#17A9C4;--bg:#FFFFFF;
+--bg-alt:#ECEEF0;--bg-alt2:#e0e3e5;--text:#334155;--text-dark:#191c1e;
+--text-muted:#44474c;--orange-light:#ffdbca;--border:rgba(196,198,205,0.3);
+--ease:cubic-bezier(0.16,1,0.3,1);
 }
-*{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:'DM+Sans',sans-serif;background:var(--bg);color:var(--fg);overflow-x:hidden;font-size:18px;line-height:1.6}
-img{display:block;max-width:100%}
+body{font-family:'DM+Sans',sans-serif;background:var(--bg);color:var(--text-muted);
+line-height:1.5;overflow-x:hidden}
 a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+.container{max-width:1280px;margin:0 auto;padding:0 24px}
 
-/* Focus-visible (all interactive elements) */
-a:focus-visible,
-button:focus-visible,
-input:focus-visible,
-select:focus-visible,
-textarea:focus-visible{
-  outline:3px solid var(--blue);
-  outline-offset:3px;
-  border-radius:4px;
-}
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:80px;
+backdrop-filter:blur(12px);background:rgba(255,255,255,0.7);
+border-bottom:1px solid rgba(255,255,255,0.2);
+box-shadow:0 4px 6px -1px rgba(0,0,0,0.1),0 2px 4px -2px rgba(0,0,0,0.1);
+transition:all .4s var(--ease)}
+.nav.scrolled{background:rgba(255,255,255,0.95)}
+.nav-inner{max-width:1280px;margin:0 auto;padding:0 24px;height:100%;
+display:flex;align-items:center;justify-content:space-between}
+.logo{font-weight:700;font-size:24px;letter-spacing:-0.6px;color:var(--text-dark)}
+.nav-links{display:flex;align-items:center;gap:32px}
+.nav-links a{font-weight:500;font-size:14px;letter-spacing:0.7px;color:var(--text-muted);
+transition:color .3s var(--ease)}
+.nav-links a:hover{color:var(--orange-dark)}
+.btn-book{background:var(--orange-dark);color:#fff;padding:10px 24px;border-radius:9999px;
+font-weight:600;font-size:14px;letter-spacing:0.7px;transition:all .3s var(--ease)}
+.btn-book:hover{background:var(--orange);transform:translateY(-2px)}
 
-/* Layout */
-.container{max-width:1920px;margin:0 auto;width:100%}
+/* HERO */
+.hero{position:relative;height:921px;min-height:600px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1564890369478-c89ca6d9cde9?w=1920&amp;h=1080&amp;fit=crop') center/cover no-repeat;will-change:transform}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(90deg,rgba(25,28,30,0.8),rgba(25,28,30,0.4) 50%,rgba(25,28,30,0))}
+.hero-content{position:relative;z-index:2;max-width:672px;padding-left:24px}
+.hero h1{font-weight:800;font-size:clamp(32px,5vw,48px);line-height:1.1;letter-spacing:-1px;color:#fff;margin-bottom:24px}
+.hero p{font-size:18px;line-height:1.625;color:rgba(255,255,255,0.8);margin-bottom:16px}
+.hero-btns{display:flex;gap:16px;margin-top:32px}
+.btn-primary{background:var(--orange-dark);color:#fff;padding:16px 32px;border-radius:9999px;
+font-weight:600;font-size:14px;letter-spacing:0.7px;transition:all .3s var(--ease)}
+.btn-primary:hover{background:var(--orange);transform:translateY(-2px);box-shadow:0 8px 24px rgba(249,115,22,0.3)}
+.btn-secondary{backdrop-filter:blur(6px);background:rgba(255,255,255,0.1);
+border:1px solid rgba(255,255,255,0.2);color:#fff;padding:17px 33px;border-radius:9999px;
+font-weight:600;font-size:14px;letter-spacing:0.7px;transition:all .3s var(--ease)}
+.btn-secondary:hover{background:rgba(255,255,255,0.2)}
 
-/* Nav */
-.navbar{position:fixed;top:0;left:0;right:0;z-index:100;backdrop-filter:blur(6px);background:rgba(251,248,255,0.9);border-bottom:1px solid var(--border);padding:8px 64px;display:flex;align-items:center;justify-content:between}
-.navbar-inner{display:flex;align-items:center;justify-content:space-between;width:100%}
-.navbar .logo{font-family:'Space+Grotesk Narrow',sans-serif;font-weight:600;font-size:32px;letter-spacing:-1.6px;color:var(--fg);white-space:nowrap}
-.nav-links{display:flex;gap:32px;align-items:center}
-.nav-links a{font-size:12px;font-weight:500;letter-spacing:0.6px;color:var(--muted);transition:color .3s var(--ease-expo)}
-.nav-links a:hover{color:var(--blue)}
-.nav-cta{background:var(--fg);color:var(--white);padding:13px 25px;font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;white-space:nowrap;border-radius:9999px;box-shadow:0 2px 8px rgba(0,0,0,0.1);transition:all .3s var(--ease-expo)}
-.nav-cta:hover{background:var(--blue);transform:translateY(-2px);box-shadow:0 8px 24px rgba(37,99,235,0.35)}
+/* SERVICES */
+.services{padding:80px 24px;background:var(--bg)}
+.services-inner{max-width:1280px;margin:0 auto;display:flex;flex-direction:column;gap:64px;align-items:flex-start}
+.section-header{text-align:center;width:100%;display:flex;flex-direction:column;gap:16px;align-items:center}
+.section-header h2{font-weight:700;font-size:32px;letter-spacing:-0.32px;color:var(--text-dark)}
+.section-header p{font-size:16px;color:var(--text-muted);max-width:576px;text-align:center}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;width:100%}
+.service-card{background:#fff;border-radius:24px;padding:33px;display:flex;flex-direction:column;gap:12px;
+box-shadow:0 2px 2px rgba(100,116,139,0.05),0 1px 1px rgba(100,116,139,0.1);
+transition:transform .4s var(--ease),box-shadow .4s var(--ease)}
+.service-card:hover{transform:translateY(-8px);box-shadow:0 20px 40px rgba(100,116,139,0.12)}
+.service-icon{width:56px;height:56px;border-radius:16px;background:var(--orange-light);
+display:flex;align-items:center;justify-content:center;font-size:28px}
+.service-card h3{font-weight:600;font-size:24px;color:var(--text-dark);padding-top:12px}
+.service-card p{font-size:16px;color:var(--text-muted);line-height:1.5}
+.service-link{display:flex;align-items:center;gap:8px;padding-top:12px;
+font-weight:600;font-size:14px;color:var(--orange-dark);letter-spacing:0.7px;cursor:pointer}
+.service-link::after{content:'→';font-size:14px;transition:transform .3s var(--ease)}
+.service-link:hover::after{transform:translateX(4px)}
 
-/* Hero */
-.hero{position:relative;height:100vh;min-height:720px;overflow:hidden;background:var(--bg)}
-.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1}
-.hero-overlay{position:absolute;inset:0;z-index:2;background:linear-gradient(135deg,rgba(24,24,27,0.85) 0%,rgba(37,99,235,0.3) 100%)}
-.hero-content{position:relative;z-index:4;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 64px}
-.hero h1{font-family:'Space+Grotesk',sans-serif;font-weight:800;font-size:clamp(40px,6vw,72px);line-height:1.1;letter-spacing:-2.88px;text-transform:uppercase;color:#fff;text-shadow:0 2px 20px rgba(0,0,0,0.3)}
-.hero-sub{font-size:18px;line-height:1.6;color:rgba(255,255,255,0.85);max-width:560px;margin-top:32px;padding:0 20px}
+/* ABOUT */
+.about{padding:80px 24px;background:var(--bg-alt)}
+.about-inner{max-width:1280px;margin:0 auto;display:flex;gap:64px;align-items:center;justify-content:center}
+.about-img{flex:1;position:relative}
+.about-img-bg{position:absolute;left:-24px;top:-24px;width:128px;height:128px;border-radius:24px;background:var(--orange-light);z-index:0}
+.about-img-frame{position:relative;z-index:1;border-radius:24px;overflow:hidden;
+aspect-ratio:4/3;box-shadow:0 20px 25px -5px rgba(0,0,0,0.1),0 10px 10px -5px rgba(0,0,0,0.04)}
+.about-img-frame img{width:100%;height:100%;object-fit:cover}
+.about-stat{position:absolute;bottom:-40px;right:-40px;z-index:2;background:#fff;
+padding:32px;border-radius:24px;
+box-shadow:0 10px 15px -3px rgba(100,116,139,0.1),0 4px 6px -2px rgba(100,116,139,0.05)}
+.about-stat .num{font-weight:800;font-size:48px;color:var(--orange-dark);letter-spacing:-1px}
+.about-stat .label{font-weight:600;font-size:14px;color:var(--text-muted);letter-spacing:0.7px}
+.about-text{flex:1;display:flex;flex-direction:column;gap:15px}
+.about-text .eyebrow{font-weight:600;font-size:14px;color:var(--orange-dark);letter-spacing:1.4px}
+.about-text h2{font-weight:700;font-size:32px;color:var(--text-dark);letter-spacing:-0.32px;line-height:1.2}
+.about-text p{font-size:16px;color:var(--text-muted);line-height:1.5}
+.about-features{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;padding-top:16px}
+.about-feature{display:flex;align-items:center;gap:12px;font-size:16px;color:var(--text-dark)}
+.about-feature::before{content:'✓';width:22px;height:22px;display:flex;align-items:center;justify-content:center;
+background:var(--orange);color:#fff;border-radius:50%;font-size:12px;flex-shrink:0}
 
-/* Services */
-.services{background:var(--magnolia);padding:128px 64px;display:flex;flex-direction:column;gap:96px}
-.services-header h2{font-family:'Space+Grotesk Narrow',sans-serif;font-weight:700;font-size:clamp(32px,4vw,48px);letter-spacing:-0.96px;color:var(--fg)}
-.services-divider{height:1px;background:var(--border);margin-top:32px}
-.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
-.service-card{display:flex;flex-direction:column;gap:8px;background:var(--white);border-radius:24px;padding:24px;box-shadow:0 2px 12px rgba(0,0,0,0.06);transition:all .5s var(--ease-expo)}
-.service-card:hover{transform:translateY(-8px);box-shadow:0 20px 48px rgba(0,0,0,0.12)}
-.service-img-wrap{position:relative;width:100%;aspect-ratio:3/4;overflow:hidden;border:1px solid var(--border);background:var(--light);border-radius:16px}
-.service-img-wrap img{width:100%;height:100%;object-fit:cover;clip-path:inset(0 0 0 0);transition:clip-path 1.2s var(--ease-expo)}
-.service-img-wrap.reveal img{clip-path:inset(100% 0 0 0)}
-.service-meta{display:flex;justify-content:space-between;align-items:center;padding-top:16px}
-.service-meta .name{font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:var(--fg)}
-.service-meta .num{font-size:12px;font-weight:500;letter-spacing:0.6px;color:var(--muted)}
-.service-desc{font-size:16px;line-height:1.6;color:var(--muted)}
-
-/* About */
-.about{background:var(--light);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:129px 64px}
-.about-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:32px;align-items:center;max-width:100%}
-.about-text{grid-column:2/span 5;display:flex;flex-direction:column;gap:24px}
-.about-text h2{font-family:'Space+Grotesk Narrow',sans-serif;font-weight:700;font-size:clamp(32px,4vw,48px);letter-spacing:-0.96px}
-.about-text p{font-size:18px;line-height:1.6;color:#1A1B22}
-.about-text .secondary{font-size:16px;color:var(--muted)}
-.about-link{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:var(--fg);color:var(--white);border-radius:9999px;box-shadow:0 2px 8px rgba(0,0,0,0.1);transition:all .3s var(--ease-expo)}
-.about-link:hover{background:var(--blue);transform:translateY(-2px);box-shadow:0 8px 24px rgba(37,99,235,0.35)}
-.about-link span{font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:var(--white)}
-.about-link .arrow{font-size:14px;color:var(--white)}
-.about-img{grid-column:8/span 5;height:600px;overflow:hidden;position:relative}
-.about-img img{width:100%;height:100%;object-fit:cover;opacity:0.8}
-
-/* Trust */
-.trust{background:var(--magnolia);padding:96px 64px;display:flex;flex-direction:column;align-items:center;gap:48px}
-.trust-label{font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);text-align:center}
-.trust-logos{display:flex;gap:96px;align-items:center;flex-wrap:wrap;justify-content:center}
-.trust-logos span{font-family:'Space+Grotesk Narrow',sans-serif;font-size:24px;font-weight:400;letter-spacing:-1.2px;color:var(--fg);white-space:nowrap;background:var(--white);padding:16px 32px;border-radius:16px;box-shadow:0 2px 8px rgba(0,0,0,0.04);transition:all .3s var(--ease-expo)}
-.trust-logos span:hover{box-shadow:0 6px 20px rgba(0,0,0,0.08);transform:translateY(-2px)}
+/* TESTIMONIALS */
+.testimonials{padding:80px 24px;background:var(--bg-alt)}
+.testimonials-inner{max-width:1280px;margin:0 auto;display:flex;flex-direction:column;gap:64px}
+.brands{display:flex;justify-content:center;align-items:center;gap:96px;opacity:0.6;flex-wrap:wrap}
+.brand{font-weight:600;font-size:24px;letter-spacing:-1.2px;color:var(--text-dark)}
+.testimonials h2{text-align:center;font-weight:700;font-size:32px;color:var(--text-dark);letter-spacing:-0.32px}
+.testimonial-grid{display:flex;gap:32px;justify-content:center;flex-wrap:wrap}
+.testimonial-card{background:#fff;border-radius:24px;padding:33px;width:389px;
+border:1px solid var(--border);
+box-shadow:0 2px 2px rgba(100,116,139,0.05),0 1px 1px rgba(100,116,139,0.1);
+display:flex;flex-direction:column;gap:24px}
+.stars{display:flex;gap:4px;color:var(--orange);font-size:18px}
+.testimonial-text{font-style:italic;font-size:16px;color:var(--text-muted);line-height:1.5}
+.testimonial-author{display:flex;align-items:center;gap:16px}
+.testimonial-avatar{width:48px;height:48px;border-radius:50%;background:#e6e8ea;display:flex;
+align-items:center;justify-content:center;font-weight:600;color:var(--text-dark)}
+.testimonial-name{font-weight:400;font-size:16px;color:var(--text-dark)}
+.testimonial-role{font-weight:500;font-size:12px;color:var(--text-muted)}
 
 /* CTA */
-.cta{position:relative;background:var(--fg);padding:128px 64px;display:flex;justify-content:center;overflow:hidden}
-.cta-bloom{position:absolute;inset:0;z-index:1;pointer-events:none}
-.cta-content{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:31px;max-width:768px;width:768px}
-.cta-content h2{font-family:'Space+Grotesk Narrow',sans-serif;font-weight:700;font-size:clamp(40px,6vw,72px);letter-spacing:-2.88px;color:var(--white);text-align:center;line-height:1.1}
-.cta-content>p{font-size:18px;line-height:1.6;color:var(--border);text-align:center}
-.cta-form{display:flex;flex-direction:column;gap:32px;width:100%;max-width:576px;margin-top:33px}
-.cta-input{position:relative;width:100%}
-.cta-input input{width:100%;border:none;border-bottom:1px solid var(--border);background:transparent;height:49px;outline:none;color:var(--white);font-family:'DM+Sans',sans-serif;font-size:14px;padding-top:20px}
-.cta-input input:focus{border-color:var(--blue)}
-.cta-input label{position:absolute;left:0;top:20px;font-size:12px;font-weight:500;letter-spacing:0.6px;color:var(--border);transition:all .3s var(--ease-expo);pointer-events:none}
-.cta-input input:focus+label,.cta-input input:not(:placeholder-shown)+label{top:0;font-size:10px}
-.cta-btn{align-self:center;margin-top:8px;background:var(--magnolia);color:var(--fg);border:none;padding:17px 33px;font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;cursor:pointer;border-radius:9999px;box-shadow:0 2px 8px rgba(0,0,0,0.1);transition:all .3s var(--ease-expo)}
-.cta-btn:hover{background:var(--blue);color:var(--white);transform:translateY(-2px);box-shadow:0 8px 24px rgba(37,99,235,0.35)}
+.cta{margin:0 24px;border-radius:40px;overflow:hidden;
+box-shadow:0 20px 25px -5px rgba(0,0,0,0.1),0 10px 10px -5px rgba(0,0,0,0.04);
+display:flex;background:#e6e8ea}
+.cta-info{background:#4c5b71;padding:64px;color:#fff;flex:0 0 40%;display:flex;flex-direction:column;justify-content:center;gap:40px;position:relative;overflow:hidden}
+.cta-info h2{font-weight:700;font-size:32px;letter-spacing:-0.32px;line-height:1.2}
+.cta-info p{font-size:16px;line-height:1.625;color:rgba(211,228,254,0.8)}
+.cta-contact{display:flex;flex-direction:column;gap:24px}
+.cta-contact-item{display:flex;align-items:center;gap:16px}
+.cta-contact-icon{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.1);
+display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.cta-contact-item span{font-size:16px;color:#fff}
+.cta-form{background:#fff;padding:64px;flex:1}
+.cta-form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:32px}
+.form-field{position:relative}
+.form-field.full{grid-column:1/-1}
+.form-field label{font-weight:600;font-size:13px;color:var(--text-muted);letter-spacing:0.7px;display:block;margin-bottom:6px}
+.form-field input,.form-field select,.form-field textarea{
+width:100%;padding:14px 18px;border:none;border-radius:12px;background:#f1f5f9;
+font-family:'DM+Sans';font-size:15px;color:var(--text-dark);
+box-shadow:inset 2px 2px 5px 1px rgba(0,0,0,0.05),inset -2px -2px 5px 1px rgba(255,255,255,0.7);
+transition:box-shadow .3s var(--ease)}
+.form-field input:focus,.form-field select:focus,.form-field textarea:focus{
+outline:none;box-shadow:inset 2px 2px 5px 1px rgba(0,0,0,0.05),inset -2px -2px 5px 1px rgba(255,255,255,0.7),0 0 0 2px var(--orange)}
+.form-field textarea{resize:vertical;min-height:120px}
+.btn-submit{grid-column:1/-1;background:var(--orange-dark);color:#fff;padding:20px 32px;
+border:none;border-radius:9999px;font-weight:600;font-size:14px;letter-spacing:0.7px;
+cursor:pointer;width:100%;transition:all .3s var(--ease);margin-top:16px}
+.btn-submit:hover{background:var(--orange);transform:translateY(-2px)}
 
-/* Footer */
-.footer{background:var(--magnolia);border-top:1px solid var(--border);padding:33px 64px 32px;display:flex;align-items:center;justify-content:space-between;gap:32px}
-.footer .logo{font-family:'Space+Grotesk Narrow',sans-serif;font-weight:600;font-size:32px;letter-spacing:-0.32px;color:var(--fg);white-space:nowrap}
-.footer-links{display:flex;gap:24px}
-.footer-links a{font-size:12px;font-weight:500;letter-spacing:0.6px;color:var(--muted);transition:color .3s var(--ease-expo)}
-.footer-links a:hover{color:var(--blue)}
-.footer-copy{font-size:12px;font-weight:500;letter-spacing:0.6px;color:var(--muted);white-space:nowrap}
+/* FOOTER */
+.footer{background:var(--bg-alt2);padding:80px 24px 0}
+.footer-inner{max-width:1280px;margin:0 auto;display:flex;gap:32px;align-items:flex-start}
+.footer-col{flex:1}
+.footer-col:first-child{padding-bottom:54px}
+.footer-col:last-child{padding-bottom:104px}
+.footer-brand{font-weight:700;font-size:24px;color:var(--text-dark)}
+.footer-col p{font-size:16px;color:var(--text-muted);line-height:1.5;margin-top:23px}
+.footer-col h4{font-weight:600;font-size:14px;color:var(--orange-dark);letter-spacing:0.7px;margin-bottom:24px}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:16px}
+.footer-col ul li a{font-size:16px;color:var(--text-muted);transition:color .3s var(--ease)}
+.footer-col ul li a:hover{color:var(--orange-dark)}
+.footer-social{display:flex;gap:16px}
+.footer-social a{width:40px;height:40px;border-radius:50%;background:var(--bg-alt);
+display:flex;align-items:center;justify-content:center;font-size:16px;transition:all .3s var(--ease)}
+.footer-social a:hover{background:var(--orange);color:#fff}
+.footer-bottom{max-width:1280px;margin:0 auto;border-top:1px solid #c4c6cd;padding:32px 24px;
+text-align:center;font-size:12px;color:var(--text-muted)}
 
-/* Scroll reveal */
-.reveal-el{opacity:0;transform:translateY(40px);transition:opacity .8s var(--ease-expo),transform .8s var(--ease-expo)}
-.reveal-el.in{opacity:1;transform:translateY(0)}
+/* REVEAL ANIMATIONS */
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.clip-reveal{clip-path:inset(0 100% 0 0);transition:clip-path 1.2s var(--ease)}
+.clip-reveal.visible{clip-path:inset(0 0 0 0)}
 
-/* Responsive */
-@media(max-width:1024px){
-  .services-grid{grid-template-columns:1fr 1fr}
-  .about-grid{grid-template-columns:1fr}
-  .about-text,.about-img{grid-column:1/-1}
-  .about-img{height:400px}
-  .navbar{padding:8px 24px}
-  .nav-links{display:none}
+/* RESPONSIVE */
+@media(max-width:900px){
+.services-grid{grid-template-columns:1fr}
+.about-inner{flex-direction:column}
+.cta{flex-direction:column}
+.cta-info{flex:1}
+.cta-form-grid{grid-template-columns:1fr}
+.footer-inner{flex-direction:column}
+.hero h1{font-size:32px}
 }
-@media(max-width:640px){
-  .services-grid{grid-template-columns:1fr}
-  .services,.about,.trust,.cta{padding-left:24px;padding-right:24px}
-  .footer{flex-direction:column;gap:16px;text-align:center}
-  .trust-logos{gap:32px}
-  .trust-logos span{padding:12px 24px}
-}
 
-/* prefers-reduced-motion: disable all animations and transitions */
+/* Focus states */
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--cta,#2B2E33);outline-offset:2px}
+
+/* REDUCED MOTION */
 @media(prefers-reduced-motion:reduce){
-  *,
-  *::before,
-  *::after{
-    animation-duration:.01ms!important;
-    animation-iteration-count:1!important;
-    transition-duration:.01ms!important;
-    scroll-behavior:auto!important;
-  }
-  html{scroll-behavior:auto!important}
-  .reveal-el{opacity:1!important;transform:none!important}
-  .service-img-wrap.reveal img{clip-path:none!important}
-  .nav-cta:hover{transform:none!important}
-  .cta-btn:hover{transform:none!important}
-  .about-link:hover{transform:none!important}
-  .service-card:hover{transform:none!important}
-  .trust-logos span:hover{transform:none!important}
-  canvas.cta-bloom{display:none!important}
+*{animation-duration:0.01ms!important;transition-duration:0.01ms!important}
+.reveal{opacity:1!important;transform:none!important}
+.clip-reveal{clip-path:none!important}
+.hero-bg{transform:none!important}
 }
 </style>
 </head>
 <body>
-<!--CONTENT-->
-
-<!-- Navbar -->
-<nav class="navbar" aria-label="Main navigation">
-  <div class="navbar-inner">
-    <a href="#" class="logo" aria-label="Marquis Clothing Parañaque - Home">Marquis Clothing Parañaque</a>
-    <div class="nav-links" role="list">
-      <a href="#work" role="listitem">Work</a>
-      <a href="#services" role="listitem">Services</a>
-      <a href="#about" role="listitem">Process</a>
-      <a href="#cta" role="listitem">Contact</a>
-    </div>
-    <a href="https://wa.me/639998827939" class="nav-cta" aria-label="Contact Us">Contact Us</a>
-  </div>
+<!--NAV-->
+<nav class="nav" id="nav">
+<div class="nav-inner">
+<a href="#" class="logo">Marquis Clothing Parañaque</a>
+<div class="nav-links">
+<a href="#services">Services</a>
+<a href="#about">About</a>
+<a href="#testimonials">Testimonials</a>
+</div>
+<a href="https://wa.me/639998827939" class="btn-book">Contact Us</a>
+</div>
 </nav>
 
-<!-- Hero -->
-<section class="hero" id="hero" aria-label="Hero introduction">
-  <img class="hero-bg" src="https://images.unsplash.com/photo-1556909114-a3e3e1e1e1e1?w=1920&amp;h=1080&amp;fit=crop" alt="Marquis Clothing Parañaque" data-parallax="0.3">
-  <div class="hero-overlay" aria-hidden="true"></div>
-<!-- Shader canvas removed per user request -->
-  <div class="hero-content">
-    <h1 class="reveal-el" data-delay="0">Marquis Clothing Parañaque</h1>
-    <p class="hero-sub reveal-el" data-delay="200">Digital printing service</p>
-  </div>
+<!--HERO-->
+<section class="hero" id="hero">
+<div class="hero-bg" id="heroBg"></div>
+<div class="hero-overlay"></div>
+<div class="hero-content">
+<h1>Marquis Clothing Parañaque</h1>
+<p>Digital printing service</p>
+<div class="hero-btns">
+<a href="https://wa.me/639998827939" class="btn-primary">Get in Touch</a>
+<a href="#services" class="btn-secondary">View All Services</a>
+</div>
+</div>
 </section>
-
-<!-- Services -->
-<section class="services" id="services" aria-label="Our printing services">
-  <div class="services-header">
-    <h2 class="reveal-el">Our Services</h2>
-    <div class="services-divider"></div>
-  </div>
-  <div class="services-grid">
-    <div class="service-card reveal-el">
-      <div class="service-img-wrap reveal" aria-label="Business Cards preview">
-        <img src="https://images.unsplash.com/photo-1564890369478-c89ca6d9cde9?w=600&amp;h=400&amp;fit=crop" alt="Business Cards">
-      </div>
-      <div class="service-meta">
-        <span class="name">Business Cards</span>
-        <span class="num">01</span>
-      </div>
-      <p class="service-desc">Fast turnaround, premium stock.</p>
-    </div>
-    <div class="service-card reveal-el">
-      <div class="service-img-wrap reveal" aria-label="Fine Art Prints preview">
-        <img src="https://images.unsplash.com/photo-1564890369478-c89ca6d9cde9?w=600&amp;h=400&amp;fit=crop" alt="Signage &amp; Tarps">
-      </div>
-      <div class="service-meta">
-        <span class="name">Signage &amp; Tarps</span>
-        <span class="num">02</span>
-      </div>
-      <p class="service-desc">Large format, vivid color.</p>
-    </div>
-    <div class="service-card reveal-el">
-      <div class="service-img-wrap reveal" aria-label="Lookbooks and Editorial preview">
-        <img src="https://images.unsplash.com/photo-1564890369478-c89ca6d9cde9?w=601&amp;h=401&amp;fit=crop" alt="Bulk Printing">
-      </div>
-      <div class="service-meta">
-        <span class="name">Bulk Printing</span>
-        <span class="num">03</span>
-      </div>
-      <p class="service-desc">Flyers, forms, and more.</p>
-    </div>
-  </div>
+<!--SERVICES-->
+<section class="services" id="services">
+<div class="services-inner">
+<div class="section-header reveal">
+<h2>Our Services</h2>
+<p>From precision tuning to routine maintenance, we provide comprehensive<br>care for your automotive investment.</p>
+</div>
+<div class="services-grid">
+<div class="service-card reveal">
+<div class="service-icon">🔧</div>
+<h3>Business Cards</h3>
+<p>Fast turnaround, premium stock.</p>
+<div class="service-link">Learn More</div>
+</div>
+<div class="service-card reveal">
+<div class="service-icon">🛑</div>
+<h3>Signage &amp; Tarps</h3>
+<p>Large format, vivid color.</p>
+<div class="service-link">Learn More</div>
+</div>
+<div class="service-card reveal">
+<div class="service-icon">🛢️</div>
+<h3>Bulk Printing</h3>
+<p>Flyers, forms, and more.</p>
+<div class="service-link">Learn More</div>
+</div>
+<div class="service-card reveal">
+<div class="service-icon">🚗</div>
+<h3>Tire Rotation</h3>
+<p>Laser-guided alignment and precision balancing to optimize tread life and fuel efficiency.</p>
+<div class="service-link">Learn More</div>
+</div>
+<div class="service-card reveal">
+<div class="service-icon">⚙️</div>
+<h3>Transmission</h3>
+<p>Full diagnostic analysis and expert repair for both automatic and dual-clutch transmissions.</p>
+<div class="service-link">Learn More</div>
+</div>
+<div class="service-card reveal">
+<div class="service-icon">⚡</div>
+<h3>Electrical</h3>
+<p>Comprehensive testing of complex electrical looms, batteries, and onboard computer systems.</p>
+<div class="service-link">Learn More</div>
+</div>
+</div>
+</div>
 </section>
-
-<!-- About -->
-<section class="about" id="about" aria-label="About the studio">
-  <div class="about-grid">
-    <div class="about-text">
-      <h2 class="reveal-el">About Marquis Clothing Parañaque</h2>
-      <p class="reveal-el" data-delay="80">Marquis Clothing Parañaque turns your ideas into print — signage, business needs, and creative jobs handled in Parañaque.</p>
-      <a href="#" class="about-link reveal-el" data-delay="240" aria-label="Discover our printing process">
-        <span>Discover Our Process</span>
-        <span class="arrow" aria-hidden="true">→</span>
-      </a>
-    </div>
-    <div class="about-img reveal-el" aria-label="Studio workspace photograph">
-      <img src="https://images.unsplash.com/photo-1556909114-c3e3e1e1e1e1?w=800&amp;h=600&amp;fit=crop" alt="Marquis Clothing Parañaque">
-    </div>
-  </div>
+<!--ABOUT-->
+<section class="about" id="about">
+<div class="about-inner">
+<div class="about-img reveal">
+<div class="about-img-bg"></div>
+<div class="about-img-frame clip-reveal">
+<img src="https://images.unsplash.com/photo-1518281420975-50db6e5d0a97?w=800&amp;h=600&amp;fit=crop" alt="Marquis Clothing Parañaque">
+</div>
+<div class="about-stat">
+<div class="num">2026+</div>
+<div class="label">Years of Master Expertise</div>
+</div>
+</div>
+<div class="about-text reveal">
+<div class="eyebrow">OUR STORY</div>
+<h2>About Marquis Clothing Parañaque</h2>
+<p>Marquis Clothing Parañaque turns your ideas into print — signage, business needs, and creative jobs handled in Parañaque.</p>
+<div class="about-features">
+<div class="about-feature">ASE Certified</div>
+<div class="about-feature">OEM Parts Only</div>
+<div class="about-feature">Full Warranty</div>
+<div class="about-feature">White Glove Service</div>
+</div>
+</div>
+</div>
 </section>
-
-<!-- Trust Row -->
-<section class="trust" aria-label="Trusted by creative professionals">
-  <div class="trust-label reveal-el">Trusted by creative professionals globally</div>
-  <div class="trust-logos reveal-el" data-delay="80">
-    <span>STUDIO NORD</span>
-    <span>AERIS</span>
-    <span>VANGUARD</span>
-    <span>LUMEN</span>
-  </div>
+<!--TESTIMONIALS-->
+<section class="testimonials" id="testimonials">
+<div class="testimonials-inner">
+<div class="brands reveal">
+<div class="brand">ASE CERTIFIED</div>
+<div class="brand">BBB A+ RATING</div>
+<div class="brand">BOSCH SERVICE</div>
+<div class="brand">AAA APPROVED</div>
+</div>
+<h2 class="reveal">Voices of Excellence</h2>
+<div class="testimonial-grid">
+<div class="testimonial-card reveal">
+<div class="stars">★★★★★</div>
+<p class="testimonial-text">"The level of professionalism at Luxe Auto is unmatched. They handled my Porsche with incredible care and the digital diagnostic report was extremely detailed."</p>
+<div class="testimonial-author">
+<div class="testimonial-avatar">JW</div>
+<div>
+<div class="testimonial-name">James Wilson</div>
+<div class="testimonial-role">911 GT3 Owner</div>
+</div>
+</div>
+</div>
+<div class="testimonial-card reveal">
+<div class="stars">★★★★★</div>
+<p class="testimonial-text">"I finally found a shop that understands Italian engineering. Their Ferrari expert is a genius. Clean, honest, and faster than the dealership."</p>
+<div class="testimonial-author">
+<div class="testimonial-avatar">ER</div>
+<div>
+<div class="testimonial-name">Elena Rossi</div>
+<div class="testimonial-role">488 Pista Owner</div>
+</div>
+</div>
+</div>
+<div class="testimonial-card reveal">
+<div class="stars">★★★★★</div>
+<p class="testimonial-text">"Outstanding customer service. They picked up my car and returned it fully detailed after the service. A true white-glove experience throughout."</p>
+<div class="testimonial-author">
+<div class="testimonial-avatar">RC</div>
+<div>
+<div class="testimonial-name">Robert Chen</div>
+<div class="testimonial-role">S-Class Owner</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section>
-
-<!-- CTA -->
-<section class="cta" id="cta" aria-label="Start a project inquiry">
-  <canvas class="cta-bloom" id="ctaBloom" aria-hidden="true"></canvas>
-  <div class="cta-content">
-    <h2 class="reveal-el">INITIATE A PROJECT</h2>
-    <p class="reveal-el" data-delay="80">Submit your details and specifications. Our specialists will consult with you to determine the optimal materials and techniques for your vision.</p>
-    <form class="cta-form reveal-el" data-delay="160" onsubmit="event.preventDefault()" aria-label="Project inquiry form">
-      <div class="cta-input">
-        <input type="text" id="name" placeholder=" " required>
-        <label for="name">Your Name</label>
-      </div>
-      <div class="cta-input">
-        <input type="email" id="email" placeholder=" " required>
-        <label for="email">Email Address</label>
-      </div>
-      <button type="submit" class="cta-btn" aria-label="Submit inquiry form">SUBMIT INQUIRY</button>
-    </form>
-  </div>
+<!--CTA-->
+<section class="cta reveal" id="cta">
+<div class="cta-info" id="ctaInfo">
+<h2>Schedule Your<br>Appointment</h2>
+<p>Ready to experience the difference? Fill out the form and our concierge team will contact you within 60 minutes to confirm your slot.</p>
+<div class="cta-contact">
+<div class="cta-contact-item">
+<div class="cta-contact-icon">📞</div>
+<span>639998827939</span>
+</div>
+<div class="cta-contact-item">
+<div class="cta-contact-icon">✉️</div>
+<span></span>
+</div>
+</div>
+</div>
+<div class="cta-form">
+<form class="cta-form-grid" onsubmit="event.preventDefault();this.querySelector('.btn-submit').textContent='Request Sent! ✓';">
+<div class="form-field">
+<label>Name</label>
+<input type="text" placeholder="John Doe">
+</div>
+<div class="form-field">
+<label>Email</label>
+<input type="email" placeholder="john@example.com">
+</div>
+<div class="form-field">
+<label>Service Type</label>
+<select>
+<option>Business Cards</option>
+<option>Signage &amp; Tarps</option>
+<option>Bulk Printing</option>
+<option>Tire Rotation</option>
+<option>Transmission</option>
+<option>Electrical</option>
+</select>
+</div>
+<div class="form-field">
+<label>Preferred Date</label>
+<input type="date">
+</div>
+<div class="form-field full">
+<label>Message</label>
+<textarea placeholder="Tell us about your vehicle and specific needs..."></textarea>
+</div>
+<button type="submit" class="btn-submit">Confirm Booking Request</button>
+</form>
+</div>
 </section>
-
-<!-- Footer -->
-<footer class="footer" aria-label="Site footer">
-  <div class="logo">Marquis Clothing Parañaque</div>
-  <div class="footer-links">
-    <a href="#" aria-label="Instagram">Instagram</a>
-    <a href="#" aria-label="LinkedIn">LinkedIn</a>
-    <a href="#" aria-label="Terms of service">Terms</a>
-    <a href="#" aria-label="Privacy policy">Privacy</a>
-  </div>
-  <div class="footer-copy">© 2024 Marquis Clothing Parañaque. ALL RIGHTS RESERVED.</div>
+<!--FOOTER-->
+<footer class="footer">
+<div class="footer-inner">
+<div class="footer-col">
+<div class="footer-brand">Marquis Clothing Parañaque</div>
+<p>Bring your ideas to life.</p>
+</div>
+<div class="footer-col">
+<h4>Quick Links</h4>
+<ul>
+<li><a href="#services">Services</a></li>
+<li><a href="#about">About Us</a></li>
+<li><a href="#testimonials">Testimonials</a></li>
+<li><a href="#cta">Book Now</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<h4>Support</h4>
+<ul>
+<li><a href="#">Location</a></li>
+<li><a href="#">Hours</a></li>
+<li><a href="#">Privacy Policy</a></li>
+<li><a href="#">Terms of Service</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<h4>Follow Us</h4>
+<div class="footer-social">
+<a href="#">f</a>
+<a href="#">X</a>
+<a href="#">in</a>
+</div>
+</div>
+</div>
+<div class="footer-bottom">© 2024 Marquis Clothing Parañaque. All rights reserved.</div>
 </footer>
-
+<!--CREATIVE-->
+<canvas id="shaderCanvas" style="position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:0.15;mix-blend-mode:overlay"></canvas>
+<div id="bloomOverlay" style="position:fixed;width:300px;height:300px;border-radius:50%;pointer-events:none;z-index:999;opacity:0;transition:opacity .4s ease;background:radial-gradient(circle,rgba(249,115,22,0.15) 0%,rgba(249,115,22,0) 70%);transform:translate(-50%,-50%)"></div>
 <script>
-/* ====== CREATIVE ENHANCEMENT LAYER ====== */
 (function(){
-'use strict';
-var RM = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-/* --- Intersection Observer Scroll Reveals --- */
-var io = new IntersectionObserver(function(entries){
-  entries.forEach(function(e){
-    if(e.isIntersecting){
-      var el = e.target;
-      var d = parseInt(el.dataset.delay||'0',10);
-      setTimeout(function(){ el.classList.add('in'); }, d);
-      io.unobserve(el);
-    }
-  });
-}, {threshold:0.15, rootMargin:'0px 0px -60px 0px'});
-document.querySelectorAll('.reveal-el').forEach(function(el){ io.observe(el); });
-
-/* --- Service Image Clip-Path Reveals --- */
-var imgIO = new IntersectionObserver(function(entries){
-  entries.forEach(function(e){
-    if(e.isIntersecting){
-      e.target.classList.remove('reveal');
-      imgIO.unobserve(e.target);
-    }
-  });
-}, {threshold:0.2});
-document.querySelectorAll('.service-img-wrap.reveal').forEach(function(el){ imgIO.observe(el); });
-
-if(RM) return; // skip heavy effects below if reduced motion
-
-/* --- Hero Parallax --- */
-var heroBg = document.querySelector('.hero-bg');
-var hero = document.querySelector('.hero');
-if(heroBg && hero){
-  window.addEventListener('scroll', function(){
-    var s = window.scrollY;
-    if(s < hero.offsetHeight){
-      heroBg.style.transform = 'translateY(' + (s * 0.3) + 'px) scale(1.05)';
-    }
-  }, {passive:true});
+/* === WEBGL SIMPLEX NOISE SHADER === */
+if(!reduced){
+const canvas=document.getElementById('shaderCanvas');
+const gl=canvas.getContext('webgl');
+if(gl){
+function resize(){canvas.width=window.innerWidth;canvas.height=window.innerHeight;gl.viewport(0,0,canvas.width,canvas.height)}
+resize();window.addEventListener('resize',resize);
+const vs=`attribute vec2 a;void main(){gl_Position=vec4(a,0.,1.)}`;
+const fs=`precision mediump float;uniform vec2 r;uniform float t;uniform float s;
+vec3 mod289(vec3 x){return x-floor(x*(1./289.))*289.;}
+vec2 mod289(vec2 x){return x-floor(x*(1./289.))*289.;}
+vec3 permute(vec3 x){return mod289(((x*34.)+1.)*x);}
+float snoise(vec2 v){
+const vec4 C=vec4(.211324865405187,.366025403784439,-.577350269189626,.024390243902439);
+vec2 i=floor(v+dot(v,C.yy));
+vec2 x0=v-i+dot(i,C.xx);
+vec2 i1=(x0.x>x0.y)?vec2(1.,0.):vec2(0.,1.);
+vec4 x12=x0.xyxy+C.xxzz;x12.xy-=i1;i=mod289(i);
+vec3 p=permute(permute(i.y+vec3(0.,i1.y,1.))+i.x+vec3(0.,i1.x,1.));
+p=mod289((p*34.+1.)*p);p=fract(p*vec3(1./41.,1./41.,1./41.));
+float m=.5-vec3(dot(x0,x0),dot(x12.xy,x12.xy),dot(x12.zw,x12.zw)).x;m=m*m*m*m;
+return 42.*m*dot(p-vec3(.5),vec3(dot(x0,x12.xy-.5),dot(x12.xy,x12.zw-.5),dot(x12.zw-x0,vec2(0.))));
+}
+void main(){
+vec2 uv=gl_FragCoord.xy/r.xy;uv.x*=r.x/r.y;
+float n=snoise(uv*3.+vec2(t*.1,s*.02));
+n+=.5*snoise(uv*6.+vec2(-t*.05,s*.01));
+n=.5+.5*n;
+vec3 orange=vec3(.976,.451,.086);vec3 steel=vec3(.392,.455,.549);
+vec3 col=mix(steel,orange,smoothstep(.3,.7,n));
+col*=.4+.6*pow(uv.y,.5);
+gl_FragColor=vec4(col,1.);
+}`;
+function sh(t,p){const s=gl.createShader(t);gl.shaderSource(s,p);gl.compileShader(s);return s}
+const prog=gl.createProgram();
+gl.attachShader(prog,sh(gl.VERTEX_SHADER,vs));gl.attachShader(prog,sh(gl.FRAGMENT_SHADER,fs));
+gl.linkProgram(prog);gl.useProgram(prog);
+const buf=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,buf);
+gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,1,-1,-1,1,-1,1,1,-1,1,1]),gl.STATIC_DRAW);
+const loc=gl.getAttribLocation(prog,'a');gl.enableVertexAttribArray(loc);
+gl.vertexAttribPointer(loc,2,gl.FLOAT,false,0,0);
+const uR=gl.getUniformLocation(prog,'r'),uT=gl.getUniformLocation(prog,'t'),uS=gl.getUniformLocation(prog,'s');
+let scrollY=0;window.addEventListener('scroll',()=>{scrollY=window.scrollY},{passive:true});
+function render(){gl.uniform2f(uR,canvas.width,canvas.height);
+gl.uniform1f(uT,performance.now()*.001);gl.uniform1f(uS,scrollY*.01);
+gl.drawArrays(gl.TRIANGLES,0,6);requestAnimationFrame(render)}render();
+}
 }
 
-/* --- No shader — removed per user request --- */
+/* === SCROLL REVEAL WITH 80ms STAGGER === */
+if(!reduced){
+const io=new IntersectionObserver((entries)=>{
+entries.forEach((e,i)=>{
+if(e.isIntersecting){
+setTimeout(()=>e.target.classList.add('visible'),i*80);
+io.unobserve(e.target);
+}
+});
+},{threshold:0.1,rootMargin:'0px 0px -50px 0px'});
+document.querySelectorAll('.reveal,.clip-reveal').forEach(el=>io.observe(el));
+}else{
+document.querySelectorAll('.reveal,.clip-reveal').forEach(el=>el.classList.add('visible'));
+}
 
-/* --- Bloom Overlay on CTA Section (follows mouse) --- */
-var ctaCanvas=document.getElementById('ctaBloom');
-var ctaSection=document.querySelector('.cta');
-if(ctaCanvas && ctaSection){
-  var ctx=ctaCanvas.getContext('2d');
-  var mouseX=0,mouseY=0,tgtX=0,tgtY=0;
-  function ctaResize(){
-    ctaCanvas.width=ctaSection.offsetWidth;
-    ctaCanvas.height=ctaSection.offsetHeight;
-    tgtX=ctaCanvas.width/2;tgtY=ctaCanvas.height/2;
-    mouseX=tgtX;mouseY=tgtY;
-  }
-  ctaResize();
-  window.addEventListener('resize',ctaResize);
-  ctaSection.addEventListener('mousemove',function(e){
-    var r=ctaSection.getBoundingClientRect();
-    tgtX=e.clientX-r.left;
-    tgtY=e.clientY-r.top;
-  });
-  function ctaRender(){
-    mouseX+=(tgtX-mouseX)*0.08;
-    mouseY+=(tgtY-mouseY)*0.08;
-    ctx.clearRect(0,0,ctaCanvas.width,ctaCanvas.height);
-    var grad=ctx.createRadialGradient(mouseX,mouseY,0,mouseX,mouseY,350);
-    grad.addColorStop(0,'rgba(37,99,235,0.18)');
-    grad.addColorStop(0.4,'rgba(37,99,235,0.06)');
-    grad.addColorStop(1,'rgba(37,99,235,0)');
-    ctx.fillStyle=grad;
-    ctx.fillRect(0,0,ctaCanvas.width,ctaCanvas.height);
-    // second bloom for depth
-    var g2=ctx.createRadialGradient(ctaCanvas.width-mouseX,ctaCanvas.height-mouseY,0,ctaCanvas.width-mouseX,ctaCanvas.height-mouseY,250);
-    g2.addColorStop(0,'rgba(255,255,255,0.04)');
-    g2.addColorStop(1,'rgba(255,255,255,0)');
-    ctx.fillStyle=g2;
-    ctx.fillRect(0,0,ctaCanvas.width,ctaCanvas.height);
-    requestAnimationFrame(ctaRender);
-  }
-  ctaRender();
+/* === PARALLAX HERO === */
+if(!reduced){
+const heroBg=document.getElementById('heroBg');
+window.addEventListener('scroll',()=>{
+const y=window.scrollY;if(y<921){heroBg.style.transform=`translateY(${y*0.4}px) scale(1.1)`}
+},{passive:true});
+}
+
+/* === NAV SCROLL === */
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>40)},{passive:true});
+
+/* === BLOOM OVERLAY ON CTA === */
+if(!reduced){
+const bloom=document.getElementById('bloomOverlay');
+const cta=document.getElementById('ctaInfo');
+cta.addEventListener('mousemove',e=>{
+const rect=cta.getBoundingClientRect();
+bloom.style.opacity='1';
+bloom.style.left=(e.clientX)+'px';bloom.style.top=(e.clientY)+'px';
+});
+cta.addEventListener('mouseleave',()=>{bloom.style.opacity='0'});
 }
 })();
 </script>
